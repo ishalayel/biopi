@@ -1,70 +1,120 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>BioPi</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #005678, #3f75c2);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 40px 20px;
-        }
-        h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-        h2 {
-            margin: 10px 0;
-            font-weight: 400;
-        }
-        .section {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            margin: 15px;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        }
-        .section a {
-            color: #cce6ff;
-            text-decoration: none;
-        }
-        .section a:hover {
-            text-decoration: underline;
-        }
-        .emoji {
-            font-size: 1.2em;
-            margin-right: 6px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BioPi</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #085078, #85d8ce);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      padding-top: 40px;
+    }
+
+    h1, h2 {
+      font-weight: bold;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .btn-outline-light {
+      border-radius: 30px;
+    }
+
+    .section-text {
+      text-align: justify;
+    }
+
+    .partner-logo {
+      width: 100%;
+      max-width: 140px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+    }
+  </style>
 </head>
+
 <body>
-    <h1>BioPi</h1>
-    <h2>Towards a Life Without Insulin Therapy</h2>
-    <h2>For Type 1 Diabetes Patients</h2>
-    <p style="max-width: 800px;">BioPi is developing an implantable bioartificial pancreas that autonomously regulates glucose levels, without insulin injections or immunosuppressive treatments.</p>
-
-    <div class="section">
-        <p><span class="emoji">🏆</span><strong>Winner of the Deep Impact Award 2024</strong></p>
-        <p><span class="emoji">🌟</span><strong>Top 5 Medtech/Biotech Startups in France – Tech&Fest 2025</strong></p>
+  <div class="container text-center text-md-start">
+    <div class="text-center mb-4">
+      <h1>BioPi</h1>
+      <h4 class="mb-3">Towards a Life Without Insulin Therapy</h4>
+      <h5 class="mb-4">For Type 1 Diabetes Patients</h5>
     </div>
 
-    <div class="section">
-        <p><span class="emoji">📩</span>contact@bio-pi.com</p>
-        <p><span class="emoji">ℹ️</span><a href="https://www.linksium.fr/projets/biopi" target="_blank">Linksium project page</a></p>
-        <p><span class="emoji">🔗</span><a href="https://www.linkedin.com/in/ibrahim-shalayel-468ba688/" target="_blank">Connect on LinkedIn – Ibrahim Shalayel</a></p>
+    <p class="section-text">
+      BioPi is developing an implantable bioartificial pancreas that autonomously regulates glucose levels, without insulin injections or lifelong immunosuppressive treatments.
+    </p>
+
+    <div class="card p-3">
+      <p class="mb-1">🏆 <strong>Winner of the Deep Impact Award 2024</strong></p>
+      <p>🌟 <strong>Top 5 Medtech/Biotech Startups in France – Tech&Fest 2025</strong></p>
     </div>
 
-    <div class="section">
-        <p><span class="emoji">🤝</span>Partnerships & press inquiries welcome</p>
+    <div class="card p-3">
+      <p>📩 contact@bio-pi.com</p>
+      <p>🔗 <a href="#" class="link-light">Linksium project page</a></p>
+      <p>🔗 <a href="#" class="link-light">Connect on LinkedIn – Ibrahim Shalayel</a></p>
     </div>
+
+    <div class="card p-3">
+      <p>🤝 Partnerships & press inquiries welcome</p>
+    </div>
+
+    <div class="d-grid gap-2 my-4">
+      <button class="btn btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#labsList">Our Partner Labs</button>
+      <div class="collapse" id="labsList">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-transparent text-white">🔬 TIMC</li>
+          <li class="list-group-item bg-transparent text-white">🔬 LBFA</li>
+          <li class="list-group-item bg-transparent text-white">🔬 LIPHY</li>
+        </ul>
+      </div>
+
+      <button class="btn btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#teamList">Scientific Team</button>
+      <div class="collapse" id="teamList">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-transparent text-white">👨‍🔬 Pr. Abdelkader ZEBDA – Project PI </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card p-3">
+      <h5 class="mb-3">Our Institutions & Partners</h5>
+      <div class="row text-center align-items-center">
+        <div class="col-6 col-md-3 mb-3">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Logo_Universit%C3%A9_Grenoble_Alpes_2020.svg" class="img-fluid partner-logo" alt="UGA logo">
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Inserm.svg" class="img-fluid partner-logo" alt="INSERM logo">
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <img src="https://upload.wikimedia.org/wikipedia/fr/7/72/Logo_Centre_national_de_la_recherche_scientifique_%282023-%29.svg" class="img-fluid partner-logo" alt="CNRS logo">
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Logo_CHU_Grenobe.gif" class="img-fluid partner-logo" alt="CHU logo">
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV4AAACCCAMAAAA5flDIAAAA2FBMVEX..." class="img-fluid partner-logo" alt="Linksium logo">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
