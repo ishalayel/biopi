@@ -15,8 +15,7 @@
       padding-top: 40px;
     }
 
-    h1,
-    h2 {
+    h1, h2 {
       font-weight: bold;
     }
 
@@ -44,11 +43,27 @@
       object-fit: contain;
       filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
     }
+
+    .top-logos {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .top-logos img {
+      max-height: 60px;
+    }
   </style>
 </head>
 
 <body>
   <div class="container text-center text-md-start">
+    <div class="top-logos">
+      <img src="https://i.imgur.com/YOMFltz.png" alt="BioPi Logo">
+      <img src="https://i.imgur.com/ylnWicj.png" alt="Linksium Logo">
+    </div>
+
     <div class="text-center mb-4">
       <h1>BioPi</h1>
       <h4 class="mb-3">Towards a Life Without Insulin Therapy</h4>
@@ -63,71 +78,52 @@
       <button class="btn btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#achievements">Achievements</button>
       <div class="collapse" id="achievements">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item bg-transparent text-white">
-            🏆 <a href="https://youtu.be/3dpoibReQTo?si=Oz_pcHTJcbq6mvd5" target="_blank" class="link-light">Winner of the Deep Impact Award 2024</a>
-          </li>
-          <li class="list-group-item bg-transparent text-white">
-            🌟 Selected among the Top 5 Medtech/Biotech Startups in France – Tech&Fest 2025
-          </li>
+          <li class="list-group-item bg-transparent text-white">🏆 <a href="https://youtu.be/3dpoibReQTo?si=Oz_pcHTJcbq6mvd5" class="link-light" target="_blank">Winner of the Deep Impact Award 2024</a></li>
+          <li class="list-group-item bg-transparent text-white">🌟 Selected among the Top 5 Medtech/Biotech Startups in France – Tech&Fest 2025</li>
         </ul>
       </div>
 
       <button class="btn btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#labsList">Our Partner Labs</button>
       <div class="collapse" id="labsList">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item bg-transparent text-white">🔬 TIMC</li>
-          <li class="list-group-item bg-transparent text-white">🔬 LBFA</li>
-          <li class="list-group-item bg-transparent text-white">🔬 LIPHY</li>
+          <li class="list-group-item bg-transparent text-white">🔬 <a href="https://www.timc.fr/cnrs-innov-pancreas-artificiel-avril2023" class="link-light" target="_blank">TIMC</a></li>
+          <li class="list-group-item bg-transparent text-white">🔬 <a href="https://lbfa.univ-grenoble-alpes.fr/news/biopi-au-salon-techfest" class="link-light" target="_blank">LBFA</a></li>
+          <li class="list-group-item bg-transparent text-white">🔬 <a href="https://liphy.univ-grenoble-alpes.fr/fr/actualites/pancreas-artificiel" class="link-light" target="_blank">LIPHY</a></li>
         </ul>
       </div>
 
       <button class="btn btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#teamList">Scientific Team</button>
       <div class="collapse" id="teamList">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item bg-transparent text-white">
-            👨‍🔬 <a href="https://scholar.google.com/citations?user=H9eu61EAAAAJ&hl=en" target="_blank" class="link-light">Pr. Abdelkader ZEBDA – Project PI</a>
-          </li>
+          <li class="list-group-item bg-transparent text-white">👨‍🔬 <a href="https://scholar.google.com/citations?user=H9eu61EAAAAJ&hl=en" class="link-light" target="_blank">Pr. Abdelkader ZEBDA – Project PI</a></li>
         </ul>
       </div>
 
       <button class="btn btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#contactList">Get in Touch</button>
       <div class="collapse" id="contactList">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item bg-transparent text-white">📧 <a href="mailto:contact@bio-pi.com" class="link-light">Email: contact@bio-pi.com</a></li>
-          <li class="list-group-item bg-transparent text-white">🔗 <a href="https://www.linksium.fr/projets/biopi" target="_blank" class="link-light">Visit our Linksium project page</a></li>
-          <li class="list-group-item bg-transparent text-white">🔗 <a href="https://www.linkedin.com/in/ibrahim-shalayel-468ba688/" target="_blank" class="link-light">Connect on LinkedIn – Ibrahim Shalayel</a></li>
+          <li class="list-group-item bg-transparent text-white">📧 <a href="mailto:contact@bio-pi.com" class="link-light">contact@bio-pi.com</a></li>
+          <li class="list-group-item bg-transparent text-white">🔗 <a href="https://www.linksium.fr/projets/biopi" class="link-light" target="_blank">Visit our Linksium project page</a></li>
+          <li class="list-group-item bg-transparent text-white">🔗 <a href="https://www.linkedin.com/in/ibrahim-shalayel-468ba688/" class="link-light" target="_blank">Connect on LinkedIn – Ibrahim Shalayel</a></li>
           <li class="list-group-item bg-transparent text-white">🤝 Partnerships & press inquiries welcome</li>
         </ul>
       </div>
     </div>
 
-    <div class="card p-3">
+    <div class="card p-3 mt-4">
       <h5 class="mb-3">Trusted by Leading Institutions</h5>
       <div class="row text-center align-items-center">
         <div class="col-6 col-md-3 mb-3">
-          <a href="https://www.univ-grenoble-alpes.fr" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Logo_Universit%C3%A9_Grenoble_Alpes_2020.svg" class="img-fluid partner-logo" alt="UGA logo">
-          </a>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Logo_Universit%C3%A9_Grenoble_Alpes_2020.svg" class="img-fluid partner-logo" alt="UGA logo">
         </div>
         <div class="col-6 col-md-3 mb-3">
-          <a href="https://www.inserm.fr" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Inserm.svg" class="img-fluid partner-logo" alt="INSERM logo">
-          </a>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Inserm.svg" class="img-fluid partner-logo" alt="INSERM logo">
         </div>
         <div class="col-6 col-md-3 mb-3">
-          <a href="https://www.cnrs.fr" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/fr/7/72/Logo_Centre_national_de_la_recherche_scientifique_%282023-%29.svg" class="img-fluid partner-logo" alt="CNRS logo">
-          </a>
+          <img src="https://upload.wikimedia.org/wikipedia/fr/7/72/Logo_Centre_national_de_la_recherche_scientifique_%282023-%29.svg" class="img-fluid partner-logo" alt="CNRS logo">
         </div>
         <div class="col-6 col-md-3 mb-3">
-          <a href="https://www.chu-grenoble.fr" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Logo_CHU_Grenobe.gif" class="img-fluid partner-logo" alt="CHU logo">
-          </a>
-        </div>
-        <div class="col-6 col-md-3 mb-3">
-          <a href="https://www.linksium.fr" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Logo_Linksium.svg" class="img-fluid partner-logo" alt="Linksium logo">
-          </a>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Logo_CHU_Grenobe.gif" class="img-fluid partner-logo" alt="CHU logo">
         </div>
       </div>
     </div>
