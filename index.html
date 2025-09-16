@@ -1,261 +1,444 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>BioPi - Implantable Bioartificial Pancreas</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BioPi — Implantable Bioartificial Pancreas | Toward Life Without Daily Insulin</title>
+    <meta name="description" content="BioPi is developing an implantable bioartificial pancreas for Type 1 Diabetes, uniting cutting-edge biomaterials and cell therapy to restore glycemic autonomy." />
+    <meta name="keywords" content="Type 1 Diabetes, BioPi, bioartificial pancreas, islet cells, encapsulation, medtech, biomaterials" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="BioPi — Implantable Bioartificial Pancreas" />
+    <meta property="og:description" content="Aiming to restore natural blood-sugar regulation for people living with Type 1 Diabetes." />
+    <meta property="og:image" content="https://i.imgur.com/t9WUzQd.png" />
+    <meta property="og:site_name" content="BioPi" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
     <style>
-        :root {
-            --biopi-dark: #1b6063;
-            --biopi-accent: #00e0cc;
-            --biopi-light: #ffffff;
-            --biopi-muted: #cdd3d4;
+        /* Custom CSS Variables */
+        :root{
+            --biopi-dark:#0f3d40;
+            --biopi-deeper:#0a2b2d;
+            --biopi-accent:#00e0cc;
+            --biopi-accent-700:#00c0b0;
+            --biopi-light:#ffffff;
+            --biopi-muted:#cfd8da;
+            --section-pad:clamp(64px,8vw,110px);
         }
 
-        body {
-            background: linear-gradient(135deg, var(--biopi-dark) 0%, #175254 100%);
+        /* General Body & HTML Styling */
+        html{scroll-behavior:smooth}
+        body{
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+            background: radial-gradient(1200px 600px at 75% -10%, rgba(0,224,204,.08), transparent),
+                        linear-gradient(135deg, var(--biopi-dark) 0%, #174a4d 100%);
             color: var(--biopi-light);
-            font-family: 'Roboto', sans-serif;
-            padding-top: 80px;
+            overflow-x:hidden;
+            padding-top:76px; /* space for fixed navbar */
         }
 
-        h1, h2, h3, h4, h5 {
-            font-weight: 700;
+        /* Navbar (translucent white + shadow on scroll) */
+        .navbar{
+            background: rgba(255,255,255,.95) !important;
+            backdrop-filter: saturate(120%) blur(6px);
+            border-bottom: 1px solid #e9ecef;
+            box-shadow: 0 0 0 rgba(0,0,0,0);
+            transition: box-shadow .25s ease, background-color .25s ease;
+        }
+        .navbar-brand img{ height:60px; }
+        .navbar .nav-link{
+            color:#1a1a1a !important;
+            font-weight:500;
+        }
+        .navbar .nav-link:hover,
+        .navbar .nav-link:focus{ color:var(--biopi-accent) !important; }
+
+        /* Stronger elevation when scrolled */
+        .navbar.scrolled{
+            box-shadow: 0 6px 20px rgba(0,0,0,.08);
         }
 
-        .section {
-            padding: 80px 0;
+        /* Hero Section */
+        .hero{
+            position:relative;
+            padding-block:var(--section-pad);
+            min-height:88vh;
+            display:grid;
+            place-items:center;
+            text-align:center;
+            isolation:isolate;
+        }
+        .hero h1{font-weight:800; letter-spacing:-.02em}
+        .hero .lead{color:var(--biopi-muted); max-width:860px; margin-inline:auto}
+        .hero-bg{
+            position:absolute; inset:0; z-index:-1; pointer-events:none;
+            background:
+                radial-gradient(600px 240px at 20% 25%, rgba(0,224,204,.12), transparent 60%),
+                radial-gradient(800px 320px at 80% 10%, rgba(255,255,255,.06), transparent 60%);
+            mask: linear-gradient(#000, transparent 95%);
+        }
+        .badge-soft{
+            background:rgba(0,0,0,.12);
+            border:1px solid rgba(255,255,255,.16);
+            color:#e8fbf8; padding:.5rem .75rem; border-radius:999px; font-weight:600;
         }
 
-        .bg-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+        /* Sections & Cards */
+        section.section{ padding-block:var(--section-pad); }
+        .bg-card{
+            background:rgba(255,255,255,.06);
+            border:1px solid rgba(255,255,255,.14);
+            border-radius:16px;
+            box-shadow:0 10px 40px rgba(0,0,0,.25);
+            backdrop-filter:blur(6px);
         }
+        .icon-round{
+            width:52px;height:52px;display:inline-grid;place-items:center;border-radius:50%;
+            background:rgba(0,224,204,.15); border:1px solid rgba(0,224,204,.35);
+        }
+        .steps .step{position:relative}
+        .steps .step:before{
+            content:""; position:absolute; left:26px; top:52px; bottom:-30px; width:2px;
+            background:linear-gradient(to bottom, rgba(0,224,204,.35), rgba(255,255,255,.15));
+        }
+        .steps .step:last-child:before{display:none}
 
-        .btn-primary {
-            background-color: var(--biopi-accent);
-            border-color: var(--biopi-accent);
-            color: var(--biopi-dark);
-            font-weight: bold;
-            border-radius: 30px;
-            padding: 12px 30px;
-            transition: all 0.3s ease-in-out;
-        }
+        /* Logos */
+        .partner-logo{ filter:drop-shadow(0 0 5px rgba(0,0,0,.3)); height:64px; width:auto; margin:14px; opacity:.9; transition:transform .25s ease;}
+        .partner-logo:hover{ transform:scale(1.03); }
 
-        .btn-primary:hover {
-            background-color: #00c0b0;
-            border-color: #00c0b0;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
+        /* FAQ Section */
+        .faq .accordion-button{ background:rgba(255,255,255,.06); color:#fff; }
+        .faq .accordion-item{ background:transparent; border:1px solid rgba(255,255,255,.16); border-radius:12px; overflow:hidden; }
 
-        .btn-outline-light:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: var(--biopi-light);
-        }
+        /* Footer */
+        footer{ background:rgba(0,0,0,.25); border-top:1px solid rgba(255,255,255,.12); }
 
-        .partner-logo {
-            filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
-            height: 80px;
-            width: auto;
-            margin: 15px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .partner-logo:hover {
-            transform: scale(1.05);
-        }
-
-        .header-sticky {
-            background: rgba(27, 96, 99, 0.95);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 999;
-            padding: 10px 30px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
-        
-        .header-left img {
-            height: 50px;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-        }
-
-        .header-right img {
-            height: 35px;
-            margin-left: 20px;
-        }
-
-        footer {
-            background-color: rgba(0, 0, 0, 0.2);
-            font-size: 0.9rem;
-        }
-
-        footer a:hover {
-            color: var(--biopi-accent);
+        /* A11y: reduced motion */
+        @media (prefers-reduced-motion: reduce){
+            *{scroll-behavior:auto !important; animation:none !important; transition:none !important;}
         }
     </style>
 </head>
-<body data-bs-theme="dark">
+<body data-bs-spy="scroll" data-bs-target="#topnav" data-bs-offset="80" tabindex="0">
 
-    <header class="header-sticky">
-        <div class="header-left">
-            <a href="#hero"><img src="https://i.imgur.com/t9WUzQd.png" alt="BioPi Logo"></a>
+    <nav id="topnav" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#hero" aria-label="BioPi home">
+                <img src="https://i.imgur.com/t9WUzQd.png" alt="BioPi logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="#innovation">Innovation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#evidence">Milestones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-accent" href="#contact">Get in touch</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="header-right">
-            <a href="#contact" class="btn btn-primary btn-sm me-3">Get in Touch</a>
-            <img src="https://i.imgur.com/ylnWicj.png" alt="Linksium Logo">
+    </nav>
+
+    <header id="hero" class="hero container">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="row align-items-center g-5">
+            <div class="col-xl-10 mx-auto text-center">
+                <span class="badge-soft">
+                    <i class="fa-solid fa-droplet me-2"></i>Type 1 Diabetes • Cell therapy • Biomaterials
+                </span>
+                <h1 class="display-4 mt-4">Toward a Life Without Daily Insulin</h1>
+                <p class="lead mt-3 mb-4">
+                    BioPi is developing an <strong>implantable bioartificial pancreas</strong> that protects insulin-producing cells
+                    while enabling oxygen and nutrient exchange—aiming to restore natural blood-sugar regulation.
+                </p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="#innovation" class="btn btn-accent btn-lg"><i class="fa-solid fa-flask me-2"></i>Explore the science</a>
+                    <a href="#contact" class="btn btn-outline-light btn-lg"><i class="fa-regular fa-handshake me-2"></i>Partner with us</a>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section id="hero" class="container text-center section d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 80px);">
-        <div>
-            <h1 class="display-3 fw-bold">BioPi</h1>
-            <p class="h3 mb-4">Towards a Life Without Insulin Therapy for Type 1 Diabetes Patients</p>
-            <p class="lead mb-5">
-                BioPi is developing an implantable bioartificial pancreas designed to restore natural blood sugar regulation.
-            </p>
-            <a href="#innovation" class="btn btn-outline-light btn-lg">Learn More</a>
-        </div>
-    </section>
-
-    <section id="innovation" class="container section">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <div class="card bg-card p-5">
-                    <h2 class="text-center mb-4">Our Innovation</h2>
-                    <p class="text-center lead mb-4">
-                        Our device encapsulates insulin-producing cells inside a protective bioreactor, shielding them from the immune system while allowing oxygen and nutrients to pass.
+    <section id="innovation" class="section container">
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-6">
+                <div class="bg-card h-100 p-4 p-md-5">
+                    <h2 class="h1">Our Innovation</h2>
+                    <p class="fs-5 text-white-50">
+                        An immune-shielded micro-bioreactor that houses functional insulin-producing cells (islets).
+                        Our design combines a <em>selective diffusion membrane</em> with an <em>oxygenation strategy</em>
+                        to sustain long-term cell viability and responsiveness.
                     </p>
-                    <p class="text-center text-muted">This breakthrough technology aims to provide a long-term solution, freeing patients from the daily burden of insulin injections.</p>
+                    <div class="row g-3 mt-3">
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex gap-3">
+                                <span class="icon-round"><i class="fa-solid fa-shield-heart"></i></span>
+                                <div>
+                                    <h6 class="mb-1">Immune protection</h6>
+                                    <p class="mb-0 text-white-50">Selective barrier blocks immune attack while allowing glucose/insulin transport.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex gap-3">
+                                <span class="icon-round"><i class="fa-solid fa-wind"></i></span>
+                                <div>
+                                    <h6 class="mb-1">Smart oxygenation</h6>
+                                    <p class="mb-0 text-white-50">Hybrid matrix and geometry enhance oxygen supply to encapsulated cells.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex gap-3">
+                                <span class="icon-round"><i class="fa-solid fa-droplet"></i></span>
+                                <div>
+                                    <h6 class="mb-1">Physiologic response</h6>
+                                    <p class="mb-0 text-white-50">Cells sense glucose changes and release insulin dynamically.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex gap-3">
+                                <span class="icon-round"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+                                <div>
+                                    <h6 class="mb-1">Replaceable module</h6>
+                                    <p class="mb-0 text-white-50">Designed for minimally invasive replacement and monitoring.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="bg-card h-100 p-4 p-md-5">
+                    <h2 class="h1">Why it matters</h2>
+                    <ul class="list-unstyled fs-5">
+                        <li class="mb-3"><i class="fa-solid fa-check me-2 text-info"></i>Reduce hypoglycemia risk and glycemic variability</li>
+                        <li class="mb-3"><i class="fa-solid fa-check me-2 text-info"></i>Alleviate daily burden of insulin dosing and carb counting</li>
+                        <li class="mb-3"><i class="fa-solid fa-check me-2 text-info"></i>Potential for durable, physiologic glucose control</li>
+                    </ul>
+                    <p class="small text-white-50 mb-0"><strong>Disclaimer:</strong> Investigational device. Not approved for sale. Availability subject to regulatory authorization.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="achievements" class="container section">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <h2 class="text-center mb-4">Our Milestones & Recognition</h2>
-                <div class="row text-center g-4">
-                    <div class="col-md-6">
-                        <div class="card bg-card h-100 p-4">
-                            <h5 class="card-title">🏆 Deep Impact Award 2024</h5>
-                            <p class="card-text">We are proud winners of the prestigious Deep Impact Award.</p>
-                            <a href="https://youtu.be/3dpoibReQTo?si=Oz_pcHTJcbq6mvd5" class="btn btn-outline-light mt-auto" target="_blank">Watch the video</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card bg-card h-100 p-4">
-                            <h5 class="card-title">🌟 Tech&Fest 2025</h5>
-                            <p class="card-text">Selected among the Top 5 Medtech/Biotech Startups in France.</p>
-                        </div>
-                    </div>
+    <section id="how" class="section container">
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-lg-8">
+                <h2 class="display-6">How it works</h2>
+                <p class="lead text-white-50">A seamless chain from cell sourcing to glucose-responsive insulin release.</p>
+            </div>
+        </div>
+
+        <div class="row g-4 steps">
+            <div class="col-md-6 col-lg-3">
+                <div class="step bg-card h-100 p-4">
+                    <div class="icon-round mb-3"><i class="fa-solid fa-seedling"></i></div>
+                    <h5>1. Therapeutic cells</h5>
+                    <p class="text-white-50 mb-0">Islet or beta-like cells prepared under GMP conditions.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="step bg-card h-100 p-4">
+                    <div class="icon-round mb-3"><i class="fa-solid fa-box-open"></i></div>
+                    <h5>2. Encapsulation</h5>
+                    <p class="text-white-50 mb-0">Cells housed inside a selective, biocompatible bioreactor.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="step bg-card h-100 p-4">
+                    <div class="icon-round mb-3"><i class="fa-solid fa-lungs"></i></div>
+                    <h5>3. Oxygen & nutrients</h5>
+                    <p class="text-white-50 mb-0">Diffusion-optimized architecture sustains viability and function.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="step bg-card h-100 p-4">
+                    <div class="icon-round mb-3"><i class="fa-solid fa-wave-square"></i></div>
+                    <h5>4. Glucose-responsive insulin</h5>
+                    <p class="text-white-50 mb-0">Physiologic insulin release in response to blood glucose changes.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="team" class="container section">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <h2 class="text-center mb-4">The Team & Partners Behind Our Mission</h2>
-                <div class="row g-4 text-center">
-                    <div class="col-md-6">
-                        <div class="card bg-card h-100 p-4">
-                            <h5 class="card-title">Our Scientific Team</h5>
-                            <ul class="list-unstyled mb-0">
-                                <li class="py-2">
-                                    <a href="https://www.linkedin.com/in/abdelkader-zebda-79104594/" class="text-decoration-none text-white" target="_blank">
-                                        <i class="fas fa-user-circle me-2"></i>Pr. Abdelkader ZEBDA – Project PI
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card bg-card h-100 p-4">
-                            <h5 class="card-title">Our Partner Labs</h5>
-                            <ul class="list-unstyled mb-0">
-                                <li class="py-2"><a href="https://www.timc.fr/cnrs-innov-pancreas-artificiel-avril2023" class="text-decoration-none text-white" target="_blank">🔬 TIMC</a></li>
-                                <li class="py-2"><a href="https://lbfa.univ-grenoble-alpes.fr/news/biopi-au-salon-techfest" class="text-decoration-none text-white" target="_blank">🔬 LBFA</a></li>
-                                <li class="py-2"><a href="https://liphy.univ-grenoble-alpes.fr/fr/actualites/pancreas-artificiel" class="text-decoration-none text-white" target="_blank">🔬 LIPHY</a></li>
-                            </ul>
-                        </div>
-                    </div>
+    <section id="evidence" class="section container">
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-6">
+                <div class="bg-card h-100 p-4 p-md-5">
+                    <h2 class="h1">Milestones & Recognition</h2>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-3"><span class="badge bg-success me-2">2024</span> Deep Impact Award — Jury Special Prize</li>
+                        <li class="mb-3"><span class="badge bg-info me-2">2025</span> Top-5 Medtech/Biotech at Tech&Fest</li>
+                        <li class="mb-3"><span class="badge bg-secondary me-2">Ongoing</span> Pre-clinical development & partnerships</li>
+                    </ul>
+                    <a class="btn btn-outline-light" target="_blank" rel="noopener" href="https://youtu.be/3dpoibReQTo?si=Oz_pcHTJcbq6mvd5">
+                        <i class="fa-brands fa-youtube me-2"></i>Watch the award clip
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="bg-card h-100 p-4 p-md-5">
+                    <h2 class="h1">Team & Labs</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fa-solid fa-user-tie me-2"></i><a class="link-light text-decoration-none" href="https://www.linkedin.com/in/abdelkader-zebda-79104594/" target="_blank" rel="noopener">Pr. Abdelkader Zebda — Project PI</a></li>
+                        <li class="mb-2"><i class="fa-solid fa-microscope me-2"></i><a class="link-light text-decoration-none" href="https://www.timc.fr/cnrs-innov-pancreas-artificiel-avril2023" target="_blank" rel="noopener">TIMC</a></li>
+                        <li class="mb-2"><i class="fa-solid fa-microscope me-2"></i><a class="link-light text-decoration-none" href="https://lbfa.univ-grenoble-alpes.fr/news/biopi-au-salon-techfest" target="_blank" rel="noopener">LBFA</a></li>
+                        <li class="mb-0"><i class="fa-solid fa-microscope me-2"></i><a class="link-light text-decoration-none" href="https://liphy.univ-grenoble-alpes.fr/fr/actualites/pancreas-artificiel" target="_blank" rel="noopener">LIPhy</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="partners" class="container section text-center">
-        <h2 class="mb-5">Trusted by Leading Institutions</h2>
+    <section id="partners" class="section container text-center">
+        <h2 class="display-6 mb-4">Trusted by leading institutions</h2>
         <div class="d-flex flex-wrap justify-content-center align-items-center">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Logo_Universit%C3%A9_Grenoble_Alpes_2020.svg" class="partner-logo" alt="UGA logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Inserm.svg" class="partner-logo" alt="INSERM logo">
-            <img src="https://upload.wikimedia.org/wikipedia/fr/7/72/Logo_Centre_national_de_la_recherche_scientifique_%282023-%29.svg" class="partner-logo" alt="CNRS logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Logo_CHU_Grenobe.gif" class="partner-logo" alt="CHU logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Logo_Universit%C3%A9_Grenoble_Alpes_2020.svg" class="partner-logo" alt="Université Grenoble Alpes" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Inserm.svg" class="partner-logo" alt="INSERM" />
+            <img src="https://upload.wikimedia.org/wikipedia/fr/7/72/Logo_Centre_national_de_la_recherche_scientifique_%282023-%29.svg" class="partner-logo" alt="CNRS" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Logo_CHU_Grenobe.gif" class="partner-logo" alt="CHU Grenoble Alpes" />
         </div>
     </section>
 
-    <section id="contact" class="container section">
+    <section id="faq" class="section container faq">
         <div class="row justify-content-center">
-            <div class="col-md-10 text-center">
-                <div class="card bg-card p-5">
-                    <h2 class="mb-4">Get in Touch</h2>
-                    <p class="lead mb-4">We welcome partnerships, collaborations, and press inquiries. Let's build a healthier future together.</p>
-                    <div class="d-grid gap-2 col-md-8 mx-auto">
-                        <a href="mailto:contact@bio-pi.com" class="btn btn-primary btn-lg">📧 contact@bio-pi.com</a>
-                        
-                        <a href="https://drive.google.com/uc?export=download&id=1z6BlN6nN5UZGA0ar_C7lHn-7oty-VL-W" class="btn btn-outline-light btn-lg" target="_blank" download>
-                            <i class="fa-solid fa-file-pdf me-2"></i>Download our Flyer
-                        </a>
+            <div class="col-lg-10">
+                <h2 class="display-6 mb-4 text-center">FAQ</h2>
+                <div class="accordion" id="faqAcc">
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header" id="q1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a1" aria-expanded="false" aria-controls="a1">
+                                Is the device available for patients?
+                            </button>
+                        </h2>
+                        <div id="a1" class="accordion-collapse collapse" aria-labelledby="q1" data-bs-parent="#faqAcc">
+                            <div class="accordion-body text-white-50">
+                                Not yet. The product is <strong>investigational</strong> and currently under pre-clinical development. Availability will depend on regulatory authorization.
+                            </div>
+                        </div>
+                    </div>
 
-                        <a href="https://www.linkedin.com/in/ibrahim-shalayel-468ba688/" class="btn btn-outline-light btn-lg" target="_blank">🔗 Connect on LinkedIn</a>
-                        <a href="https://www.linksium.fr/projets/biopi" class="btn btn-outline-light btn-lg" target="_blank">🔗 Visit our Linksium project page</a>
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header" id="q2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2" aria-expanded="false" aria-controls="a2">
+                                What is unique about BioPi’s approach?
+                            </button>
+                        </h2>
+                        <div id="a2" class="accordion-collapse collapse" aria-labelledby="q2" data-bs-parent="#faqAcc">
+                            <div class="accordion-body text-white-50">
+                                We combine <em>immune isolation</em> with <em>oxygenation</em> and a modular form factor to maintain cell function and enable replacement if needed.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="q3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3" aria-expanded="false" aria-controls="a3">
+                                How can I collaborate or invest?
+                            </button>
+                        </h2>
+                        <div id="a3" class="accordion-collapse collapse" aria-labelledby="q3" data-bs-parent="#faqAcc">
+                            <div class="accordion-body text-white-50">
+                                Email us with your background and interest areas. We welcome partners in biomaterials, cell sourcing, manufacturing, clinical research, and financing.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="mt-5 py-4">
-        <div class="container text-center text-white-50">
-            <p class="mb-1">&copy; 2025 BioPi. All rights reserved.</p>
-            <p class="mb-0">
-                <a href="#" class="text-white-50 text-decoration-underline me-3">Privacy Policy</a>
-                <a href="#" class="text-white-50 text-decoration-underline">Terms of Service</a>
-            </p>
+    <section id="contact" class="section container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="bg-card p-4 p-md-5 text-center">
+                    <h2 class="display-6 mb-3">Get in touch</h2>
+                    <p class="lead text-white-50">We welcome partnerships, collaborations, and press inquiries.</p>
+
+                    <div class="d-grid gap-2 gap-md-3 d-md-flex justify-content-center mt-3">
+                        <a href="mailto:contact@bio-pi.com" class="btn btn-accent btn-lg"><i class="fa-regular fa-envelope me-2"></i>contact@bio-pi.com</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1z6BlN6nN5UZGA0ar_C7lHn-7oty-VL-W" class="btn btn-outline-light btn-lg" target="_blank" rel="noopener" download>
+                            <i class="fa-solid fa-file-pdf me-2"></i>Download our flyer
+                        </a>
+                        <a href="https://www.linkedin.com/in/ibrahim-shalayel-468ba688/" class="btn btn-outline-light btn-lg" target="_blank" rel="noopener">Connect on LinkedIn</a>
+                    </div>
+
+                    <p class="small text-white-50 mt-4 mb-0">
+                        By contacting BioPi, you consent to be contacted regarding partnership opportunities. We don’t sell your data.
+                        <a class="link-light text-decoration-underline" href="#privacy">Privacy</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4">
+        <div class="container small text-white-50 d-flex flex-wrap align-items-center justify-content-between gap-3">
+            <p class="mb-0">© <span id="year"></span> BioPi. All rights reserved.</p>
+            <div class="d-flex gap-3">
+                <a id="privacy" class="link-light text-decoration-underline" href="#">Privacy Policy</a>
+                <a class="link-light text-decoration-underline" href="#">Terms of Service</a>
+                <img src="https://i.imgur.com/ylnWicj.png" alt="Linksium" style="height:26px" />
+            </div>
         </div>
     </footer>
 
-    <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="btn btn-primary" style="display: none; position: fixed; bottom: 20px; right: 20px; z-index: 1000; padding: 10px 14px; border-radius: 50%;">↑</button>
+    <button id="scrollTopBtn" class="btn btn-accent" style="display:none; position: fixed; bottom:20px; right:20px; z-index:1000; padding:10px 14px; border-radius:50%;" aria-label="Scroll to top">↑</button>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <script>
-        window.onscroll = function() {
-            const btn = document.getElementById("scrollTopBtn");
-            btn.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
-        };
+        // Set the current year in the footer
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+
+        // Toggle the scroll-to-top button visibility
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('scrollTopBtn');
+            btn.style.display = document.documentElement.scrollTop > 320 ? 'inline-flex' : 'none';
+        });
+        document.getElementById('scrollTopBtn').addEventListener('click', () =>
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        );
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Organization",
+      "name":"BioPi",
+      "url":"https://bio-pi.com",
+      "logo":"https://i.imgur.com/t9WUzQd.png",
+      "sameAs":[
+        "https://www.linksium.fr/projets/biopi",
+        "https://www.linkedin.com/in/ibrahim-shalayel-468ba688/"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"MedicalDevice",
+      "name":"BioPi Bioartificial Pancreas",
+      "description":"Investigational implantable device encapsulating insulin-producing cells with selective diffusion and oxygenation features.",
+      "purpose":"Type 1 Diabetes treatment",
+      "manufacturer":{"@type":"Organization","name":"BioPi"},
+      "status":"https://schema.org/Preclinical",
+      "legalStatus":"https://schema.org/ResearchUse"
+    }
     </script>
 </body>
 </html>
