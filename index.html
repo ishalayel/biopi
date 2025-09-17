@@ -3,18 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BioPi — Implantable Bioartificial Pancreas | Toward Life Without Daily Insulin</title>
-  <meta name="description" content="BioPi is developing an implantable bioartificial pancreas for Type 1 Diabetes, uniting cutting-edge biomaterials and cell therapy to restore glycemic autonomy." />
+  <title>BIOPI — Implantable Bioartificial Pancreas | Toward Life Without Daily Insulin</title>
+  <meta name="description" content="BIOPI is developing an implantable bioartificial pancreas that mimic the natural function of the human organ. By protecting insulin-producing cells and ensuring continuous oxygen and nutrient supply, our device aims to deliver long-term, autonomous glucose regulation, without the need for daily insuline injections or lifelong immunosuppressive drugs." />
   <link rel="canonical" href="https://bio-pi.com/" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="BioPi — Implantable Bioartificial Pancreas" />
+  <meta property="og:title" content="BIOPI — Implantable Bioartificial Pancreas" />
   <meta property="og:description" content="Aiming to restore natural blood-sugar regulation for people living with Type 1 Diabetes." />
   <meta property="og:image" content="https://i.imgur.com/t9WUzQd.png" />
-  <meta property="og:site_name" content="BioPi" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="/favicon.ico" />
 
-  <!-- Fonts & CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
@@ -23,46 +21,46 @@
 
   <style>
     /* ========================
-       Design tokens
+        Design tokens
     ======================== */
     :root{
-      --biopi-dark:#0f3d40;         /* page background gradient start */
-      --biopi-deeper:#0a2b2d;       /* gradient end */
-      --biopi-accent:#00e0cc;       /* primary CTA */
-      --biopi-accent-700:#00c0b0;   /* hover */
-      --biopi-ink:#0e1b1c;          /* dark text on light */
-      --biopi-light:#ffffff;        /* pure white */
-      --biopi-muted:#cfe6e3;        /* subtle text */
+      --BIOPI-dark:#0f3d40;      /* page background gradient start */
+      --BIOPI-deeper:#0a2b2d;    /* gradient end */
+      --BIOPI-accent:#00e0cc;    /* primary CTA */
+      --BIOPI-accent-700:#00c0b0;/* hover */
+      --BIOPI-ink:#0e1b1c;       /* dark text on light */
+      --BIOPI-light:#ffffff;     /* pure white */
+      --BIOPI-muted:#cfe6e3;     /* subtle text */
       --section-pad:clamp(64px,8vw,110px);
     }
 
     /* ========================
-       Base
+        Base
     ======================== */
     html{scroll-behavior:smooth}
     body{
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
       background:
         radial-gradient(1200px 600px at 75% -10%, rgba(0,224,204,.08), transparent),
-        linear-gradient(135deg, var(--biopi-dark) 0%, #174a4d 100%);
-      color: var(--biopi-light);
+        linear-gradient(135deg, var(--BIOPI-dark) 0%, #174a4d 100%);
+      color: var(--BIOPI-light);
       overflow-x:hidden;
       padding-top:86px; /* space for fixed navbar */
     }
-    :focus-visible{outline:3px solid var(--biopi-accent); outline-offset:2px}
+    :focus-visible{outline:3px solid var(--BIOPI-accent); outline-offset:2px}
     section[id]{scroll-margin-top:96px}
 
     /* ========================
-       Buttons
+        Buttons
     ======================== */
     .btn-accent{
       --bs-btn-color:#082424;
-      --bs-btn-bg:var(--biopi-accent);
-      --bs-btn-border-color:var(--biopi-accent);
-      --bs-btn-hover-bg:var(--biopi-accent-700);
-      --bs-btn-hover-border-color:var(--biopi-accent-700);
-      --bs-btn-active-bg:var(--biopi-accent-700);
-      --bs-btn-active-border-color:var(--biopi-accent-700);
+      --bs-btn-bg:var(--BIOPI-accent);
+      --bs-btn-border-color:var(--BIOPI-accent);
+      --bs-btn-hover-bg:var(--BIOPI-accent-700);
+      --bs-btn-hover-border-color:var(--BIOPI-accent-700);
+      --bs-btn-active-bg:var(--BIOPI-accent-700);
+      --bs-btn-active-border-color:var(--BIOPI-accent-700);
       --bs-btn-padding-x:1.1rem; --bs-btn-padding-y:.7rem; --bs-btn-border-radius:.8rem;
       font-weight:700;
       box-shadow:0 10px 30px rgba(0,224,204,.25);
@@ -74,21 +72,21 @@
     }
 
     /* ========================
-       Navbar
+        Navbar
     ======================== */
     .navbar{background: rgba(255,255,255,.97)!important; border-bottom:1px solid #e9ecef; backdrop-filter:saturate(120%) blur(6px); transition: box-shadow .25s ease}
     .navbar.scrolled{box-shadow:0 6px 20px rgba(0,0,0,.08)}
     .navbar .nav-link{color:#0d1b1b!important; font-weight:600}
-    .navbar .nav-link.active{color:var(--biopi-accent)!important}
+    .navbar .nav-link.active{color:var(--BIOPI-accent)!important}
     .navbar-brand img{height:clamp(44px,7vh,72px); width:auto}
     .navbar-toggler{border-color:#d0d7da}
     .navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(20,30,30,0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")}
 
     /* ========================
-       Hero
+        Hero
     ======================== */
     .hero{position:relative; padding-block:var(--section-pad); min-height:88vh; display:grid; place-items:center; text-align:center; isolation:isolate}
-    .hero .lead{color:var(--biopi-muted); max-width:860px; margin-inline:auto}
+    .hero .lead{color:var(--BIOPI-muted); max-width:860px; margin-inline:auto}
     .hero-bg{position:absolute; inset:0; z-index:-1; pointer-events:none; background:
       radial-gradient(600px 240px at 20% 25%, rgba(0,224,204,.12), transparent 60%),
       radial-gradient(800px 320px at 80% 10%, rgba(255,255,255,.06), transparent 60%);
@@ -97,7 +95,7 @@
     .badge-soft{background:rgba(0,0,0,.12); border:1px solid rgba(255,255,255,.16); color:#e8fbf8; padding:.5rem .75rem; border-radius:999px; font-weight:600}
 
     /* ========================
-       Cards / Sections
+        Cards / Sections
     ======================== */
     section.section{padding-block:var(--section-pad)}
     .bg-card{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:16px; box-shadow:0 10px 40px rgba(0,0,0,.25); backdrop-filter:blur(6px)}
@@ -111,19 +109,19 @@
     .steps .step:last-child:before{display:none}
 
     /* ========================
-       Logos
+        Logos
     ======================== */
     .partner-logo{filter:drop-shadow(0 0 5px rgba(0,0,0,.3)); height:64px; width:auto; margin:14px; opacity:.92; transition:transform .25s ease, opacity .25s ease}
     .partner-logo:hover{ transform:scale(1.03); opacity:1 }
 
     /* ========================
-       FAQ
+        FAQ
     ======================== */
     .faq .accordion-button{ background:rgba(255,255,255,.06); color:#fff; }
     .faq .accordion-item{ background:transparent; border:1px solid rgba(255,255,255,.16); border-radius:12px; overflow:hidden; }
 
     /* ========================
-       Footer & utilities
+        Footer & utilities
     ======================== */
     footer{ background:rgba(0,0,0,.25); border-top:1px solid rgba(255,255,255,.12); }
     #scrollTopBtn{position:fixed; bottom:20px; right:20px; z-index:1000; padding:12px 14px; border-radius:50%; display:none}
@@ -135,11 +133,10 @@
 <body data-bs-spy="scroll" data-bs-target="#topnav" data-bs-offset="100" tabindex="0">
   <a class="visually-hidden-focusable position-absolute top-0 start-0 m-3 p-2 bg-white rounded" href="#hero">Skip to content</a>
 
-  <!-- Navbar -->
   <nav id="topnav" class="navbar navbar-expand-lg fixed-top" aria-label="Primary">
     <div class="container">
-      <a class="navbar-brand" href="#hero" aria-label="BioPi home">
-        <img src="https://i.imgur.com/t9WUzQd.png" alt="BioPi logo" loading="eager" decoding="async">
+      <a class="navbar-brand" href="#hero" aria-label="BIOPI home">
+        <img src="https://i.imgur.com/t9WUzQd.png" alt="BIOPI logo" loading="eager" decoding="async">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -156,41 +153,39 @@
     </div>
   </nav>
 
-  <!-- Hero -->
   <header id="hero" class="hero container">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="row align-items-center g-5">
       <div class="col-xl-10 mx-auto text-center">
         <span class="badge-soft"><i class="fa-solid fa-droplet me-2"></i>Type 1 Diabetes • Cell therapy • Biomaterials</span>
         <h1 class="display-4 mt-4 fw-bold">Toward a Life Without Daily Insulin</h1>
-        <p class="lead mt-3 mb-4">BioPi is developing an <strong>implantable bioartificial pancreas</strong> that protects insulin-producing cells while enabling oxygen and nutrient exchange—aiming to restore natural blood-sugar regulation.</p>
+        <p class="lead mt-3 mb-4">BIOPI is developing a breakthrough bioartificial pancreas that mimics the natural function of the human organ. By protecting insulin-producing cells and ensuring continuous oxygen and nutrient supply, our device aims to deliver long-term, autonomous glucose regulation, without the need for daily insuline injections or lifelong immunosuppressive drugs.</p>
         <div class="d-flex flex-wrap justify-content-center gap-3">
           <a href="#innovation" class="btn btn-accent btn-lg"><i class="fa-solid fa-flask me-2" aria-hidden="true"></i><span>Explore the science</span></a>
-          <a href="#contact" class="btn btn-ghost btn-lg"><i class="fa-regular fa-handshake me-2" aria-hidden="true"></i><span>Partner with us</span></a>
+          <a href="#contact" class="btn btn-ghost btn-lg"><i class="fa-regular fa-handshake me-2" aria-hidden="true"></i><span>Collaborate with us</span></a>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Innovation -->
   <section id="innovation" class="section container">
     <div class="row g-4 align-items-stretch">
       <div class="col-lg-6">
         <div class="bg-card h-100 p-4 p-md-5">
           <h2 class="h1">Our Innovation</h2>
-          <p class="fs-5 text-white-50">An immune-shielded micro-bioreactor that houses functional insulin-producing cells (islets). Our design combines a <em>selective diffusion membrane</em> with an <em>oxygenation strategy</em> to sustain long-term cell viability and responsiveness.</p>
+          <p class="fs-5 text-white-50">We are developing a next-generation bioartificial pancreas: an immune-shielded bioreactor that houses functional insulin-producing cells (islets). Its unique design combines a <em>selective diffusion membrane</em> with an <em>oxygenation strategy</em> to ensure long-term survival and responsiveness of cells.</p>
           <div class="row g-3 mt-3">
             <div class="col-12 col-md-6">
-              <div class="d-flex gap-3"><span class="icon-round"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i></span><div><h6 class="mb-1">Immune protection</h6><p class="mb-0 text-white-50">Selective barrier blocks immune attack while allowing glucose/insulin transport.</p></div></div>
+              <div class="d-flex gap-3"><span class="icon-round"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i></span><div><h6 class="mb-1">Immune protection</h6><p class="mb-0 text-white-50">Selective barrier blocks immune attack while allowing natural glucose/insulin exchange.</p></div></div>
             </div>
             <div class="col-12 col-md-6">
-              <div class="d-flex gap-3"><span class="icon-round"><i class="fa-solid fa-wind" aria-hidden="true"></i></span><div><h6 class="mb-1">Smart oxygenation</h6><p class="mb-0 text-white-50">Hybrid matrix and geometry enhance oxygen supply to encapsulated cells.</p></div></div>
+              <div class="d-flex gap-3"><span class="icon-round"><i class="fa-solid fa-wind" aria-hidden="true"></i></span><div><h6 class="mb-1">Smart oxygenation</h6><p class="mb-0 text-white-50">Hybrid matrix and optimized geometry deliver continuous oxygen to encapsulated cells.</p></div></div>
             </div>
             <div class="col-12 col-md-6">
-              <div class="d-flex gap-3"><span class="icon-round"><i class="fa-solid fa-droplet" aria-hidden="true"></i></span><div><h6 class="mb-1">Physiologic response</h6><p class="mb-0 text-white-50">Cells sense glucose changes and release insulin dynamically.</p></div></div>
+              <div class="d-flex gap-3"><span class="icon-round"><i class="fa-solid fa-droplet" aria-hidden="true"></i></span><div><h6 class="mb-1">Physiologic response</h6><p class="mb-0 text-white-50">Cells sense glucose changes and release insulin automatically.</p></div></div>
             </div>
             <div class="col-12 col-md-6">
-              <div class="d-flex gap-3"><span class="icon-round"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span><div><h6 class="mb-1">Replaceable module</h6><p class="mb-0 text-white-50">Designed for minimally invasive replacement and monitoring.</p></div></div>
+              <div class="d-flex gap-3"><span class="icon-round"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span><div><h6 class="mb-1">Replaceable module</h6><p class="mb-0 text-white-50">Engineered for minimally invasive replacement.</p></div></div>
             </div>
           </div>
         </div>
@@ -200,9 +195,9 @@
         <div class="bg-card h-100 p-4 p-md-5">
           <h2 class="h1">Why it matters</h2>
           <ul class="list-unstyled fs-5">
-            <li class="mb-3"><i class="fa-solid fa-check me-2 text-info" aria-hidden="true"></i>Reduce hypoglycemia risk and glycemic variability</li>
-            <li class="mb-3"><i class="fa-solid fa-check me-2 text-info" aria-hidden="true"></i>Alleviate daily burden of insulin dosing and carb counting</li>
-            <li class="mb-3"><i class="fa-solid fa-check me-2 text-info" aria-hidden="true"></i>Potential for durable, physiologic glucose control</li>
+            <li class="mb-3"><i class="fa-solid fa-check me-2 text-info" aria-hidden="true"></i>Reduce hypoglycemia risk and stabilize blood-sugar</li>
+            <li class="mb-3"><i class="fa-solid fa-check me-2 text-info" aria-hidden="true"></i>Free patients from daily insuline injections</li>
+            <li class="mb-3"><i class="fa-solid fa-check me-2 text-info" aria-hidden="true"></i>Provide durable, physiologic glucose control</li>
           </ul>
           <p class="small text-white-50 mb-0"><strong>Disclaimer:</strong> Investigational device. Not approved for sale. Availability subject to regulatory authorization.</p>
         </div>
@@ -210,12 +205,11 @@
     </div>
   </section>
 
-  <!-- How it works -->
   <section id="how" class="section container">
     <div class="row justify-content-center text-center mb-5">
       <div class="col-lg-8">
         <h2 class="display-6">How it works</h2>
-        <p class="lead text-white-50">A seamless chain from cell sourcing to glucose-responsive insulin release.</p>
+        <p class="lead text-white-50">From cell preparation to natural insuline release.</p>
       </div>
     </div>
 
@@ -224,34 +218,33 @@
         <div class="step bg-card h-100 p-4">
           <div class="icon-round mb-3"><i class="fa-solid fa-seedling" aria-hidden="true"></i></div>
           <h5>1. Therapeutic cells</h5>
-          <p class="text-white-50 mb-0">Islet or beta-like cells prepared under GMP conditions.</p>
+          <p class="text-white-50 mb-0">Insulin-producing islets (or stem-cell–derived beta cells) are prepared under strict GMP standards.</p>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="step bg-card h-100 p-4">
           <div class="icon-round mb-3"><i class="fa-solid fa-box-open" aria-hidden="true"></i></div>
           <h5>2. Encapsulation</h5>
-        <p class="text-white-50 mb-0">Cells housed inside a selective, biocompatible bioreactor.</p>
+        <p class="text-white-50 mb-0">Cells are placed inside a biocompatible, immune-shielding bioreactor that protects them while allowing nutrient and hormone exchange.</p>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="step bg-card h-100 p-4">
           <div class="icon-round mb-3"><i class="fa-solid fa-lungs" aria-hidden="true"></i></div>
           <h5>3. Oxygen &amp; nutrients</h5>
-          <p class="text-white-50 mb-0">Diffusion-optimized architecture sustains viability and function.</p>
+          <p class="text-white-50 mb-0">A diffusion-optimized design ensures continuous oxygenation and nutrient supply, keeping the cells alive and functional long term.</p>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="step bg-card h-100 p-4">
           <div class="icon-round mb-3"><i class="fa-solid fa-wave-square" aria-hidden="true"></i></div>
           <h5>4. Glucose-responsive insulin</h5>
-          <p class="text-white-50 mb-0">Physiologic insulin release in response to blood glucose changes.</p>
+          <p class="text-white-50 mb-0">The cells sense rising blood sugar and release insulin naturally, just like a healthy pancreas !</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Evidence / Awards -->
   <section id="evidence" class="section container">
     <div class="row g-4 align-items-stretch">
       <div class="col-lg-6">
@@ -265,30 +258,50 @@
           <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://youtu.be/3dpoibReQTo?si=Oz_pcHTJcbq6mvd5"><i class="fa-brands fa-youtube me-2" aria-hidden="true"></i>Watch the award clip</a>
         </div>
       </div>
-
+    
       <div class="col-lg-6">
-        <div class="bg-card h-100 p-4 p-md-5">
-          <h2 class="h1">Team &amp; Labs</h2>
-          <ul class="list-unstyled">
-            <li class="mb-3">
-  <a class="d-flex align-items-center text-decoration-none link-light" href="https://www.linkedin.com/in/abdelkader-zebda-79104594/" target="_blank" rel="noopener">
-    <img class="avatar me-3" src="data:image/jpeg;base64,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" alt="Pr. Abdelkader Zebda" loading="lazy" decoding="async"/>
-    <div>
-      <strong>Pr. Abdelkader Zebda</strong> — Project PI
-      <div class="small text-white-50">TIMC-IMAG, Université Grenoble Alpes</div>
-    </div>
-  </a>
-</li>
-            <li class="mb-2"><i class="fa-solid fa-microscope me-2" aria-hidden="true"></i><a class="link-light text-decoration-none" href="https://www.timc.fr/cnrs-innov-pancreas-artificiel-avril2023" target="_blank" rel="noopener">TIMC</a></li>
-            <li class="mb-2"><i class="fa-solid fa-microscope me-2" aria-hidden="true"></i><a class="link-light text-decoration-none" href="https://lbfa.univ-grenoble-alpes.fr/news/biopi-au-salon-techfest" target="_blank" rel="noopener">LBFA</a></li>
-            <li class="mb-0"><i class="fa-solid fa-microscope me-2" aria-hidden="true"></i><a class="link-light text-decoration-none" href="https://liphy.univ-grenoble-alpes.fr/fr/actualites/pancreas-artificiel" target="_blank" rel="noopener">LIPhy</a></li>
-          </ul>
-        </div>
+          <div class="bg-card h-100 p-4 p-md-5">
+              <h2 class="h1">Team</h2>
+              <div class="mb-3">
+                  <h6 class="text-uppercase text-white-50 small mb-3">People</h6>
+                  <ul class="list-unstyled mb-4">
+                      <li class="mb-3">
+                          <a class="d-flex align-items-center text-decoration-none link-light" href="https://www.linkedin.com/in/ibrahim-shalayel-468ba688/" target="_blank" rel="noopener">
+                              <img class="avatar me-3" src="https://i.imgur.com/DVAf6do.jpeg" alt="Ibrahim Shalayel" loading="lazy" decoding="async"/>
+                              <div>
+                                  <strong>Ibrahim Shalayel</strong> — Project lead &amp; business contact
+                              </div>
+                          </a>
+                      </li>
+                      <li class="mb-3">
+                          <a class="d-flex align-items-center text-decoration-none link-light" href="https://www.linkedin.com/in/abdelkader-zebda-79104594/" target="_blank" rel="noopener">
+                              <img class="avatar me-3" src="https://i.imgur.com/DjoGuaA.jpeg" alt="Pr. Abdelkader Zebda" loading="lazy" decoding="async"/>
+                              <div>
+                                  <strong>Pr. Abdelkader Zebda</strong> — Project PI
+                                  <div class="small text-white-50">TIMC-IMAG, Université Grenoble Alpes</div>
+                              </div>
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-6">
+          <div class="bg-card h-100 p-4 p-md-5">
+              <h2 class="h1">Labs</h2>
+              <div>
+                  <h6 class="text-uppercase text-white-50 small mb-3">Partner labs</h6>
+                  <ul class="list-unstyled mb-0">
+                      <li class="mb-2"><i class="fa-solid fa-microscope me-2" aria-hidden="true"></i><a class="link-light text-decoration-none" href="https://www.timc.fr/cnrs-innov-pancreas-artificiel-avril2023" target="_blank" rel="noopener">TIMC</a></li>
+                      <li class="mb-2"><i class="fa-solid fa-microscope me-2" aria-hidden="true"></i><a class="link-light text-decoration-none" href="https://lbfa.univ-grenoble-alpes.fr/news/BIOPI-au-salon-techfest" target="_blank" rel="noopener">LBFA</a></li>
+                      <li class="mb-0"><i class="fa-solid fa-microscope me-2" aria-hidden="true"></i><a class="link-light text-decoration-none" href="https://liphy.univ-grenoble-alpes.fr/fr/actualites/pancreas-artificiel" target="_blank" rel="noopener">LIPhy</a></li>
+                  </ul>
+              </div>
+          </div>
       </div>
     </div>
   </section>
 
-  <!-- Partners -->
   <section id="partners" class="section container text-center">
     <h2 class="display-6 mb-4">Trusted by leading institutions</h2>
     <div class="d-flex flex-wrap justify-content-center align-items-center">
@@ -299,7 +312,6 @@
     </div>
   </section>
 
-  <!-- FAQ -->
   <section id="faq" class="section container faq">
     <div class="row justify-content-center">
       <div class="col-lg-10">
@@ -316,7 +328,7 @@
 
           <div class="accordion-item mb-3">
             <h2 class="accordion-header" id="q2">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2" aria-expanded="false" aria-controls="a2">What is unique about BioPi’s approach?</button>
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2" aria-expanded="false" aria-controls="a2">What is unique about BIOPI’s approach?</button>
             </h2>
             <div id="a2" class="accordion-collapse collapse" aria-labelledby="q2" data-bs-parent="#faqAcc">
               <div class="accordion-body text-white-50">We combine <em>immune isolation</em> with <em>oxygenation</em> and a modular form factor to maintain cell function and enable replacement if needed.</div>
@@ -336,7 +348,6 @@
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact" class="section container">
     <div class="row justify-content-center">
       <div class="col-lg-9">
@@ -348,16 +359,15 @@
             <a href="https://drive.google.com/uc?export=download&id=1z6BlN6nN5UZGA0ar_C7lHn-7oty-VL-W" class="btn btn-ghost btn-lg" target="_blank" rel="noopener" download><i class="fa-solid fa-file-pdf me-2" aria-hidden="true"></i>Download our flyer</a>
             <a href="https://www.linkedin.com/in/ibrahim-shalayel-468ba688/" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">Connect on LinkedIn</a>
           </div>
-          <p class="small text-white-50 mt-4 mb-0">By contacting BioPi, you consent to be contacted regarding partnership opportunities. We don’t sell your data. <a class="link-light text-decoration-underline" href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy</a>.</p>
+          <p class="small text-white-50 mt-4 mb-0">By contacting BIOPI, you consent to be contacted regarding partnership opportunities. We don’t sell your data. <a class="link-light text-decoration-underline" href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy</a>.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="py-4">
     <div class="container small text-white-50 d-flex flex-wrap align-items-center justify-content-between gap-3">
-      <p class="mb-0">© <span id="year"></span> BioPi. All rights reserved.</p>
+      <p class="mb-0">© <span id="year"></span> BIOPI. All rights reserved.</p>
       <div class="d-flex gap-3 align-items-center">
         <a class="link-light text-decoration-underline" href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
         <a class="link-light text-decoration-underline" href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Service</a>
@@ -366,10 +376,8 @@
     </div>
   </footer>
 
-  <!-- Scroll to Top -->
   <button id="scrollTopBtn" class="btn btn-accent" aria-label="Scroll to top">↑</button>
 
-  <!-- Privacy Modal -->
   <div class="modal fade" id="privacyModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable"><div class="modal-content bg-dark text-white">
       <div class="modal-header"><h5 class="modal-title">Privacy Policy</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div>
@@ -379,17 +387,15 @@
     </div></div>
   </div>
 
-  <!-- Terms Modal -->
   <div class="modal fade" id="termsModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable"><div class="modal-content bg-dark text-white">
       <div class="modal-header"><h5 class="modal-title">Terms of Service</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div>
       <div class="modal-body">
-        <p class="small text-white-50">BioPi content is provided for informational purposes. The device is investigational and not available for sale. Nothing on this site constitutes medical advice.</p>
+        <p class="small text-white-50">BIOPI content is provided for informational purposes. The device is investigational and not available for sale. Nothing on this site constitutes medical advice.</p>
       </div>
     </div></div>
   </div>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -412,16 +418,15 @@
     });
   </script>
 
-  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"Organization",
-    "name":"BioPi",
+    "name":"BIOPI",
     "url":"https://bio-pi.com",
     "logo":"https://i.imgur.com/t9WUzQd.png",
     "sameAs":[
-      "https://www.linksium.fr/projets/biopi",
+      "https://www.linksium.fr/projets/BIOPI",
       "https://www.linkedin.com/in/ibrahim-shalayel-468ba688/"
     ]
   }
@@ -430,10 +435,10 @@
   {
     "@context":"https://schema.org",
     "@type":"MedicalDevice",
-    "name":"BioPi Bioartificial Pancreas",
+    "name":"BIOPI Bioartificial Pancreas",
     "description":"Investigational implantable device encapsulating insulin-producing cells with selective diffusion and oxygenation features.",
     "purpose":"Type 1 Diabetes treatment",
-    "manufacturer":{"@type":"Organization","name":"BioPi"},
+    "manufacturer":{"@type":"Organization","name":"BIOPI"},
     "status":"https://schema.org/Preclinical",
     "legalStatus":"https://schema.org/ResearchUse"
   }
