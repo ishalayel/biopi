@@ -168,13 +168,13 @@
       margin: 0 auto 32px;
       font-size: clamp(1rem, 2vw, 1.25rem); /* Responsive font size */
     }
-    .hero-image {
+    .hero-video {
       max-width: 100%;
       height: auto;
       border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       margin: 32px 0;
-      object-fit: cover; /* Ensures image covers area without distortion */
+      object-fit: cover; /* Ensures video covers area without distortion */
       max-height: 500px; /* Cap max height for larger screens */
     }
     .hero .d-flex {
@@ -302,7 +302,6 @@
       color: var(--BIOPI-teal);
     }
 
-
     /* Scroll to top button - Improved visibility and accessibility */
     #scrollTopBtn {
       position: fixed; bottom: 20px; right: 20px; z-index: 1000;
@@ -348,7 +347,7 @@
       .navbar-nav .nav-link::after {
           display: none; /* Remove underline effect on mobile menu */
       }
-      .hero-image {
+      .hero-video {
         max-height: 400px;
         margin-top: 24px;
       }
@@ -421,10 +420,10 @@
             <a href="#innovation" class="btn btn-teal btn-lg">Explore the Science</a>
             <a href="#contact" class="btn btn-outline-teal btn-lg">Collaborate with Us</a>
           </div>
-          <img src="https://i.imgur.com/2X9p2GL.jpeg"
-               alt="Microscopic view of pancreatic islets, key components of BIOPI's bioartificial pancreas."
-               class="hero-image"
-               loading="eager" decoding="async" fetchpriority="high">
+          <video class="hero-video" autoplay muted loop playsinline aria-label="Video showcasing BIOPI's bioartificial pancreas device">
+            <source src="https://www.bio-pi.com/BIOPI%20device%20silent.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
     </div>
