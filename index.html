@@ -33,7 +33,11 @@
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"></noscript>
   <style>
-    /* Custom properties and base styles */
+    /* RESET & SAFETY */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+    img, video, svg { max-width: 100%; height: auto; display: block; }
     :root {
       --BIOPI-teal: #00e0cc;
       --BIOPI-dark: #0f3d40;
@@ -43,16 +47,18 @@
       --BIOPI-accent: #00b3a1;
       --section-pad: clamp(64px, 8vw, 110px);
     }
-    html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
       background-color: var(--BIOPI-light);
       color: var(--BIOPI-ink);
-      overflow-x: hidden;
-      padding-top: 86px; /* Adjusted to match navbar height */
+      padding-top: 86px; /* matches navbar height */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      -webkit-text-size-adjust: 100%;
+      text-rendering: optimizeLegibility;
     }
+
     /* Brand utilities */
     .text-teal { color: var(--BIOPI-teal) !important; }
     .text-bg-teal {
@@ -63,7 +69,8 @@
       font-weight: 700;
       margin-right: 0.75rem;
     }
-    /* Button styles - Enhanced with glow effect */
+
+    /* Buttons */
     .btn-teal {
       background-color: var(--BIOPI-teal);
       color: var(--BIOPI-light);
@@ -80,9 +87,8 @@
       box-shadow: 0 0 20px rgba(0, 224, 204, 0.5);
       color: var(--BIOPI-light);
     }
-    .btn-teal:focus {
-      box-shadow: 0 0 0 0.25rem rgba(0, 224, 204, 0.5);
-    }
+    .btn-teal:focus { box-shadow: 0 0 0 0.25rem rgba(0, 224, 204, 0.5); }
+
     .btn-outline-teal {
       border: 2px solid var(--BIOPI-teal);
       color: var(--BIOPI-teal);
@@ -97,10 +103,9 @@
       color: var(--BIOPI-light);
       transform: translateY(-2px);
     }
-    .btn-outline-teal:focus {
-      box-shadow: 0 0 0 0.25rem rgba(0, 224, 204, 0.5);
-    }
-    /* Navbar enhancements - Sticky with subtle shrink on scroll */
+    .btn-outline-teal:focus { box-shadow: 0 0 0 0.25rem rgba(0, 224, 204, 0.5); }
+
+    /* Navbar */
     .navbar {
       background: var(--BIOPI-light);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
@@ -109,17 +114,9 @@
       top: 0; width: 100%; z-index: 1000;
       transition: padding 0.3s ease, box-shadow 0.3s ease;
     }
-    .navbar.scrolled {
-      padding: 8px 0;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-    .navbar-brand img {
-      height: 44px;
-      transition: height 0.3s ease;
-    }
-    .navbar.scrolled .navbar-brand img {
-      height: 36px;
-    }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+    .navbar-brand img { height: 44px; transition: height 0.3s ease; }
+    .navbar.scrolled .navbar-brand img { height: 36px; }
     .navbar-nav .nav-link {
       color: var(--BIOPI-ink) !important;
       font-weight: 600;
@@ -129,66 +126,49 @@
     .navbar-nav .nav-link::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 2px;
+      bottom: 0; left: 50%;
+      width: 0; height: 2px;
       background-color: var(--BIOPI-teal);
       transition: width 0.3s ease, left 0.3s ease;
     }
     .navbar-nav .nav-link:hover::after,
-    .navbar-nav .nav-link.active::after {
-      width: 100%;
-      left: 0;
-    }
-    .navbar-toggler {
-      border-color: rgba(0, 0, 0, 0.1);
-    }
-    .navbar-toggler:focus {
-      box-shadow: 0 0 0 0.25rem rgba(0, 224, 204, 0.25);
-    }
-    /* Hero section - Parallax background and animated elements */
+    .navbar-nav .nav-link.active::after { width: 100%; left: 0; }
+    .navbar-toggler { border-color: rgba(0, 0, 0, 0.1); }
+    .navbar-toggler:focus { box-shadow: 0 0 0 0.25rem rgba(0, 224, 204, 0.25); }
+
+    /* Hero */
     .hero {
       padding: var(--section-pad) 0;
       text-align: center;
       background: linear-gradient(135deg, rgba(15, 61, 64, 0.05), rgba(0, 224, 204, 0.1));
       min-height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       position: relative;
-      overflow: hidden;
+      overflow: hidden; /* clip background/artifacts */
     }
     .hero::before {
       content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      position: absolute; inset: 0;
       background: url('https://i.imgur.com/t9WUzQd.png') no-repeat center center/cover;
-      opacity: 0.1;
-      z-index: -1;
+      opacity: 0.1; z-index: -1;
       transform: translateY(0);
       transition: transform 0.5s ease;
     }
     .hero h1 {
       color: var(--BIOPI-dark);
-      font-weight: 800;
-      margin-bottom: 20px;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 800; margin-bottom: 20px;
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
       line-height: 1.1;
       animation: fadeInUp 1s ease-out;
     }
     .hero p {
       color: var(--BIOPI-muted);
-      max-width: 800px;
-      margin: 0 auto 32px;
+      max-width: 800px; margin: 0 auto 32px;
       font-size: clamp(1rem, 2vw, 1.25rem);
       animation: fadeInUp 1.2s ease-out;
     }
     .hero-video {
-      max-width: 100%;
+      width: 100%;
       height: auto;
       border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -197,44 +177,30 @@
       max-height: 500px;
       animation: fadeIn 1.5s ease-out;
     }
-    .hero .d-flex {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      animation: fadeInUp 1.4s ease-out;
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    /* Section common styles */
+    .hero .d-flex { flex-wrap: wrap; justify-content: center; gap: 1rem; animation: fadeInUp 1.4s ease-out; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Sections */
     section.section { padding: var(--section-pad) 0; }
     .section-title {
       color: var(--BIOPI-dark);
-      font-weight: 700;
-      margin-bottom: 32px;
-      text-align: center;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700; margin-bottom: 32px; text-align: center;
+      font-size: clamp(1.8rem, 4vw, 3rem);
     }
-    /* Card styles - With hover scale and glow */
+
+    /* Cards */
     .bg-card {
       background: var(--BIOPI-light);
       border-radius: 16px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      padding: 32px;
-      margin-bottom: 32px;
+      padding: 32px; margin-bottom: 32px;
       border: 1px solid rgba(0, 224, 204, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      will-change: transform;
     }
-    .bg-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 15px 40px rgba(0, 224, 204, 0.2);
-    }
-    .bg-card h3 {
-      color: var(--BIOPI-dark);
-      font-weight: 700;
-    }
-    /* Icon round - Pulse animation on hover */
+    .bg-card:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0, 224, 204, 0.2); } /* no scale (prevents overflow) */
+    .bg-card h3 { color: var(--BIOPI-dark); font-weight: 700; }
+
     .icon-round {
       width: 64px; height: 64px;
       background: rgba(0, 224, 204, 0.15);
@@ -245,163 +211,102 @@
       font-size: 1.8rem;
       transition: background-color 0.3s ease, transform 0.3s ease;
     }
-    .bg-card:hover .icon-round {
-      background: rgba(0, 224, 204, 0.25);
-      animation: pulse 1.5s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-    /* Partner logos - Color pop and scale on hover */
+    .bg-card:hover .icon-round { background: rgba(0, 224, 204, 0.25); transform: translateY(-2px); }
+
+    /* Partners */
     .partner-logo {
-      height: 70px;
-      max-width: 180px;
-      width: auto;
-      margin: 16px;
-      opacity: 0.7;
+      height: 70px; max-width: 180px; width: auto;
+      margin: 16px; opacity: 0.7;
       transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
       filter: grayscale(80%);
     }
-    .partner-logo:hover {
-      opacity: 1;
-      transform: scale(1.1);
-      filter: grayscale(0%);
-    }
-    .partners-grid {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-    }
-    /* FAQ section - Animated expansion */
+    .partner-logo:hover { opacity: 1; transform: translateY(-2px); filter: grayscale(0%); }
+    .partners-grid { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+
+    /* FAQ */
     .faq .accordion-button {
-      background: var(--BIOPI-teal);
-      color: var(--BIOPI-light);
-      font-weight: 600;
-      border-radius: 8px 8px 0 0;
+      background: var(--BIOPI-teal); color: var(--BIOPI-light);
+      font-weight: 600; border-radius: 8px 8px 0 0;
     }
     .faq .accordion-button:not(.collapsed) {
       color: var(--BIOPI-dark);
       background-color: rgba(0, 224, 204, 0.15);
       box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .125);
     }
-    .faq .accordion-button:focus {
-      box-shadow: 0 0 0 0.25rem rgba(0, 224, 204, 0.5);
-    }
-    .faq .accordion-item {
-      border: 1px solid rgba(0, 224, 204, 0.3);
-      border-radius: 8px;
-      margin-bottom: 16px;
-      overflow: hidden;
-    }
-    .faq .accordion-body {
-      background-color: var(--BIOPI-light);
-      color: var(--BIOPI-ink);
-      padding: 1.5rem;
-      border-top: 1px solid rgba(0, 224, 204, 0.1);
-    }
-    /* Footer styles - With hover effects on links */
+    .faq .accordion-button:focus { box-shadow: 0 0 0 0.25rem rgba(0, 224, 204, 0.5); }
+    .faq .accordion-item { border: 1px solid rgba(0, 224, 204, 0.3); border-radius: 8px; margin-bottom: 16px; overflow: hidden; }
+    .faq .accordion-body { background-color: var(--BIOPI-light); color: var(--BIOPI-ink); padding: 1.5rem; border-top: 1px solid rgba(0, 224, 204, 0.1); }
+
+    /* Footer */
     footer {
       background: var(--BIOPI-dark);
       color: rgba(255, 255, 255, 0.8);
-      padding: 40px 0;
-      text-align: center;
-      font-size: 0.9rem;
+      padding: 40px 0; text-align: center; font-size: 0.9rem;
     }
-    footer a {
-      color: var(--BIOPI-teal);
-      text-decoration: none;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-    footer a:hover {
-      color: var(--BIOPI-light);
-      transform: translateY(-2px);
-    }
-    .social-icons a {
-      font-size: 1.2rem;
-      margin: 0 10px;
-      color: rgba(255, 255, 255, 0.8);
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-    .social-icons a:hover {
-      color: var(--BIOPI-teal);
-      transform: rotate(360deg);
-    }
-    /* Scroll to top button */
+    footer a { color: var(--BIOPI-teal); text-decoration: none; transition: color 0.3s ease, transform 0.3s ease; }
+    footer a:hover { color: var(--BIOPI-light); transform: translateY(-2px); }
+    .social-icons a { font-size: 1.2rem; margin: 0 10px; color: rgba(255, 255, 255, 0.8); transition: color 0.3s ease, transform 0.3s ease; }
+    .social-icons a:hover { color: var(--BIOPI-teal); transform: rotate(360deg); }
+
+    /* Scroll to top */
     #scrollTopBtn {
       position: fixed; bottom: 20px; right: 20px; z-index: 1000;
       display: none; padding: 12px 18px;
       background: var(--BIOPI-teal); color: white;
-      border-radius: 50%; cursor: pointer;
-      font-size: 1.5rem;
-      border: none;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 50%; cursor: pointer; font-size: 1.5rem; border: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     }
-    #scrollTopBtn:hover {
-      background-color: var(--BIOPI-accent);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    }
-    #scrollTopBtn:focus {
-      outline: none;
-      box-shadow: 0 0 0 0.25rem rgba(0, 224, 204, 0.5);
-    }
-    /* Responsive adjustments */
+    #scrollTopBtn:hover { background-color: var(--BIOPI-accent); transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.3); }
+    #scrollTopBtn:focus { outline: none; box-shadow: 0 0 0 0.25rem rgba(0, 224, 204, 0.5); }
+
+    /* RESPONSIVE FIXES */
     @media (max-width: 991.98px) {
+      /* Make the collapsed menu full-bleed to viewport to avoid right overflow */
       .navbar-collapse {
-        background: var(--BIOPI-light);
         position: absolute;
         top: 100%;
-        left: 0;
-        width: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;           /* match viewport width */
+        max-width: 100vw;
+        background: var(--BIOPI-light);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
         border-top: 1px solid rgba(0, 0, 0, 0.05);
       }
-      .navbar-nav {
-        padding: 1rem 0;
-      }
-      .navbar-nav .nav-item {
-        margin: 0 1rem;
-      }
-      .navbar-nav .nav-link {
-        text-align: center;
-        padding: 0.75rem 0;
-      }
-      .navbar-nav .nav-link::after {
-        display: none;
-      }
-      .hero-video {
-        max-height: 400px;
-        margin-top: 24px;
-      }
+      .navbar-nav { padding: 0.5rem 0; }
+      .navbar-nav .nav-item { margin: 0 0.5rem; }
+      .navbar-nav .nav-link { text-align: center; padding: 0.75rem 0; }
+      .navbar-nav .nav-link::after { display: none; }
+
+      /* Clip any animated overflow inside sections/containers */
+      section.section > .container { overflow: hidden; }
+
+      .hero-video { max-height: 400px; margin-top: 24px; }
     }
+
     @media (max-width: 767.98px) {
       body { padding-top: 70px; }
       .navbar-brand img { height: 38px; }
-      .hero h1 { font-size: 2.2rem; }
+      .hero h1 { font-size: 2rem; }
       .hero p { font-size: 1rem; }
-      .section-title { font-size: 1.8rem; }
+      .section-title { font-size: 1.65rem; }
       .bg-card { padding: 24px; }
-      .hero .d-flex {
-        flex-direction: column;
-        align-items: center;
-      }
-      .btn-teal, .btn-outline-teal {
-        width: 90%;
-        max-width: 300px;
-      }
-      .partner-logo { height: 50px; margin: 10px; }
+      .hero .d-flex { flex-direction: column; align-items: center; }
+      .btn-teal, .btn-outline-teal { width: 100%; max-width: 360px; }
+      .partner-logo { height: 50px; margin: 10px; max-width: 40vw; } /* ensure no overflow */
       .icon-round { width: 50px; height: 50px; font-size: 1.5rem; }
+      /* Disable hover-driven transforms on touch to avoid layout jank */
+      .bg-card:hover, .bg-card:hover .icon-round { transform: none !important; }
     }
-    /* AOS fade-in animations */
-    [data-aos] {
-      opacity: 0;
-      transition-property: opacity, transform;
-    }
-    [data-aos].aos-animate {
-      opacity: 1;
+
+    /* AOS fade-in base (kept) */
+    [data-aos] { opacity: 0; transition-property: opacity, transform; }
+    [data-aos].aos-animate { opacity: 1; }
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
     }
   </style>
 </head>
@@ -426,6 +331,7 @@
       </div>
     </div>
   </nav>
+
   <section id="hero" class="hero d-flex align-items-center">
     <div class="container">
       <div class="row">
@@ -446,6 +352,7 @@
       </div>
     </div>
   </section>
+
   <section id="innovation" class="section" data-aos="fade-up" data-aos-delay="100">
     <div class="container">
       <h2 class="section-title">Our Revolutionary Innovation</h2>
@@ -488,6 +395,7 @@
             </div>
           </div>
         </div>
+
         <div class="col-lg-6 col-md-10">
           <div class="bg-card h-100 d-flex flex-column justify-content-between">
             <div>
@@ -507,6 +415,7 @@
       </div>
     </div>
   </section>
+
   <section id="how" class="section bg-light" data-aos="fade-up" data-aos-delay="200">
     <div class="container">
       <h2 class="section-title">How Our Bioartificial Pancreas Works</h2>
@@ -542,6 +451,7 @@
       </div>
     </div>
   </section>
+
   <section id="evidence" class="section" data-aos="fade-up" data-aos-delay="100">
     <div class="container">
       <h2 class="section-title">Milestones, Team & Labs</h2>
@@ -562,6 +472,7 @@
             </a>
           </div>
         </div>
+
         <div class="col-lg-6 col-md-10" data-aos="fade-left" data-aos-delay="200">
           <div class="bg-card h-100">
             <h3 class="text-center mb-4">Our Expert Team</h3>
@@ -574,16 +485,11 @@
                   <small class="text-muted">Project Leader & Entrepreneur</small>
                 </div>
               </div>
-              <div class="d-flex align-items-center">
-
-                <div>
-                  <strong> 
-                  
-                </div>
-              </div>
+              <!-- Add other team members here as needed -->
             </div>
           </div>
         </div>
+
         <div class="col-lg-6 col-md-10" data-aos="fade-up" data-aos-delay="300">
           <div class="bg-card h-100">
             <h3 class="text-center mb-4">Collaborating Laboratories</h3>
@@ -597,9 +503,11 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
+
   <section id="partners" class="section bg-light" data-aos="fade-up" data-aos-delay="100">
     <div class="container text-center">
       <h2 class="section-title">Empowered by Leading Partners</h2>
@@ -625,6 +533,7 @@
       </div>
     </div>
   </section>
+
   <section id="faq" class="section faq" data-aos="fade-up" data-aos-delay="100">
     <div class="container">
       <h2 class="section-title">Frequently Asked Questions</h2>
@@ -680,6 +589,7 @@
       </div>
     </div>
   </section>
+
   <section id="contact" class="section" data-aos="fade-up" data-aos-delay="100">
     <div class="container">
       <div class="row justify-content-center">
@@ -706,6 +616,7 @@
       </div>
     </div>
   </section>
+
   <footer>
     <div class="container">
       <div class="social-icons mb-3">
@@ -720,47 +631,43 @@
       </p>
     </div>
   </footer>
+
   <button id="scrollTopBtn" class="btn" aria-label="Scroll to top of page">↑</button>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       AOS.init({ duration: 800, once: true });
+
       const yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
+
       const btn = document.getElementById('scrollTopBtn');
-      const toggleBtn = () => {
-        if (window.scrollY > 300) {
-          btn.style.display = 'flex';
-        } else {
-          btn.style.display = 'none';
-        }
-      };
+      const toggleBtn = () => { btn.style.display = window.scrollY > 300 ? 'flex' : 'none'; };
       toggleBtn();
       window.addEventListener('scroll', toggleBtn, { passive: true });
       btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
       const navbar = document.getElementById('topnav');
       if (navbar) {
         const scrollChange = 50;
         window.addEventListener('scroll', () => {
-          if (window.scrollY > scrollChange) {
-            navbar.classList.add('scrolled');
-          } else {
-            navbar.classList.remove('scrolled');
-          }
+          if (window.scrollY > scrollChange) navbar.classList.add('scrolled');
+          else navbar.classList.remove('scrolled');
         }, { passive: true });
       }
+
+      // Smooth scroll + auto-close on mobile
       document.querySelectorAll('a.nav-link[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+
           const navCollapse = document.getElementById('navContent');
           const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
-          if (bsCollapse && navCollapse.classList.contains('show')) {
-            bsCollapse.hide();
-          }
+          if (bsCollapse && navCollapse.classList.contains('show')) bsCollapse.hide();
         });
       });
     });
